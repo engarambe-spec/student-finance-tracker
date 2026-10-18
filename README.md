@@ -1,7 +1,7 @@
 # student finace tracker
 
 live: https:https://github.com/engarambe-spec/student-finance-tracker.git
-Demo video : 
+Demo video : https://youtu.be/aNlOKqUQYZc
 
 ## features 
 add, edit and delete transactions ' sort' live regex search with highlight 'dashboard stats and 7-day chart ' spending cap alerts ' 3 currencies with manual rates ' locastorage auto-save ' JSON import?export
