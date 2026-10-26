@@ -1,6 +1,6 @@
 # student finace tracker
 
-live: https:https://github.com/engarambe-spec/student-finance-tracker.git
+Live: https://engarambe-spec.github.io/student-finance-tracker/
 Demo video : https://youtu.be/aNlOKqUQYZc
 
 ## features 

@@ -1,15 +1,14 @@
-const key = 'sft:data';
-const settings_key = 'sft:settings';
+const KEY = 'sft:data';
+const SETTINGS_KEY = 'sft:settings';
 
 function read(key, fallback) {
     try {
         return JSON.parse(localStorage.getItem(key)) ?? fallback;
-
     } catch {
         return fallback;
     }
 }
-export const load =() => read(key, []);
-export const save =data => localStorage.setItem(key, JSON.stringify(data));
-export const loadsettings = () => read(settings_key, {});
-export const saveSettings = s => loacalstorage.setItem(settings_key, JSON.stringify(s));
+export const load = () => read(KEY, []);
+export const save = data => localStorage.setItem(KEY, JSON.stringify(data));
+export const loadSettings = () => read(SETTINGS_KEY, {});
+export const saveSettings = s => localStorage.setItem(SETTINGS_KEY, JSON.stringify(s));

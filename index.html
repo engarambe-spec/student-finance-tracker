@@ -2,169 +2,167 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewpot" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="accessible student finance tracker">
-        <title>student finance tracker</title>
-        <link rel="stylesheet" href="style/main.css">
-        <script type="module" scr="scripts/main.js"></script>
+        <title>Student Finance Tracker</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <script type="module" src="scripts/main.js"></script>
     </head>
     <body>
-        <a href="#main" class="skip-link">skip to content</a>
-        <head>
-            <h1>student finance tracker</h1>
-            <nav aria-label="main">
+        <a href="#main" class="skip-link">Skip to content</a>
+        <header>
+            <h1>Student Finance Tracker</h1>
+            <nav aria-label="Main">
                 <ul>
-                    <li><a href="#dashboard">dashboard</a></li>
-                    <li><a href="#records">records</a></li>
-                    <li><a href="#add">add</a></li>
-                    <li><a href="#about">about</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#records">Records</a></li>
+                    <li><a href="#add">Add</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="#about">About</a></li>
                 </ul>
             </nav>
-        </head>
-        <main id="main"tabindex="-1">
-            <div id="status" class="status" role="status" aria-live="polite"></div>
-            <section id="dashboard" aria-labelledby="dashboard-title">
-                <h2 id="dashboard-title">dashboard</h2>
-                <div class="stats"
-                <div class="stat"><span> total records</span><strong id="stat-count">0</strong></div>
-                <div class="stat"><span>Total spent</span><strong id="stat-sum">0.00</strong></div>
-                <div class="stat"><span>Top category</span><strong id="stat-top">—</strong></div>
-        </div>
-                <h3>last 7 days</h3>
-                <div id="chart" class="chart" role="img" aria-label="spending last 7 days"></div>
-                <p id="cap-msg" class="cap-msg" aria-live="polite"></p>
+        </header>
 
+        <main id="main" tabindex="-1">
+            <div id="status" class="status" role="status" aria-live="polite"></div>
+
+            <section id="dashboard" aria-labelledby="dashboard-title">
+                <h2 id="dashboard-title">Dashboard</h2>
+                <div class="stats">
+                    <div class="stat"><span>Total records</span><strong id="stat-count">0</strong></div>
+                    <div class="stat"><span>Total spent</span><strong id="stat-sum">0.00</strong></div>
+                    <div class="stat"><span>Top category</span><strong id="stat-top">—</strong></div>
+                </div>
+                <h3>Last 7 days</h3>
+                <div id="chart" class="chart" role="img" aria-label="Spending last 7 days"></div>
+                <p id="cap-msg" class="cap-msg" aria-live="polite"></p>
             </section>
+
             <section id="records" aria-labelledby="records-title">
-                <h2 id="records-title">records</h2>
+                <h2 id="records-title">Records</h2>
                 <div class="controls">
-                    <div class="fiels">
-                        <label for="search">regex search</label>
+                    <div class="field">
+                        <label for="search">Regex search</label>
                         <input id="search" type="text" placeholder="e.g. coffee|tea" autocomplete="off" aria-describedby="search-err">
                     </div>
-                <div class="field">
-                    <label for="sort">sort by</label>
-                    <select id="sort">
-                        <option value="date-decs">date (newest)</option>
-                        <option value="date-asc">date (oldest)</option>
-                        <option value="desc-asc">Description A→Z</option>
-                        <option value="desc-desc">Description Z→A</option>
-                        <option value="amount-desc">Amount ↓</option>
-                        <option value="amount-asc">Amount ↑</option>
-                    </select>
+                    <div class="field">
+                        <label for="sort">Sort by</label>
+                        <select id="sort">
+                            <option value="date-desc">Date (newest)</option>
+                            <option value="date-asc">Date (oldest)</option>
+                            <option value="desc-asc">Description A→Z</option>
+                            <option value="desc-desc">Description Z→A</option>
+                            <option value="amount-desc">Amount ↓</option>
+                            <option value="amount-asc">Amount ↑</option>
+                        </select>
+                    </div>
+                    <label class="inline"><input id="case" type="checkbox" checked> Case-insensitive</label>
+                    <p id="search-err" class="error" aria-live="polite"></p>
                 </div>
-                <label class="inline"><input id="case" type="checkbox" checked> case-insensitive</label>
-                <p id="search-err" class="error" aria-live="polite"></p>
-            </div>
-            <p id="results-count" class="muted" aria-live="polite"></p>
-            <table>
-                <caption class="sr-only">transactions</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">date</th>
-                        <th scope="col">description</th>
-                        <th scope="col">category</th>
-                        <th scope="col">amount</th>
-                        <th scope="col">actions</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody"></tbody>
-            </table>
-            <p id="empty" hidden>No records match.</p>
+                <p id="result-count" class="muted" aria-live="polite"></p>
+                <table>
+                    <caption class="sr-only">Transactions</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+                <p id="empty" class="muted" hidden>No records match.</p>
             </section>
+
             <section id="add" aria-labelledby="add-title">
-                <h2 id="add-title">add transaction</h2>
+                <h2 id="add-title">Add transaction</h2>
                 <form id="form" novalidate>
-                    <div class="field"
-                     <label for="f-description">description</label>
-                    <input id="f-amout" name="amount" type="text" inputmode="decimal" aria-describedby="e-amount">
-                    <span id="e-amount" class="error"></span>
-                </div>
-                <div class="field">
-                    <label for="f-amount">amount (base current)</label>
-                    <input id="f-amount" name="amount" type="text" inputmode="decimal" aria-describedby="e-amount">
-                    <span id="e-amount" class="error"></span>
-                </div>
-                <div class="field">
-                    <label for="f-category">category</label>
-                    <input id="f-category" name="category" type="text" list="casts" aria-describedby="e-category">
-                    <datalist id="cast"></datalist>
-                    <span id="e-category" class="error"></span>
-                </div>
-                <div class="field">
-                    <label for="f-data">date (YYY-MM-DD)</label>
-                    <input id="f-date" name="data" type="text" inputmode="numeric" aria-describedby="e-date">
-                    <span id="e-date" class="error"></span>
-                </div>
-                <button type="submit">Add transaction</button>
+                    <div class="field">
+                        <label for="f-description">Description</label>
+                        <input id="f-description" name="description" type="text" aria-describedby="e-description">
+                        <span id="e-description" class="error"></span>
+                    </div>
+                    <div class="field">
+                        <label for="f-amount">Amount (base currency)</label>
+                        <input id="f-amount" name="amount" type="text" inputmode="decimal" aria-describedby="e-amount">
+                        <span id="e-amount" class="error"></span>
+                    </div>
+                    <div class="field">
+                        <label for="f-category">Category</label>
+                        <input id="f-category" name="category" type="text" list="cats" aria-describedby="e-category">
+                        <datalist id="cats"></datalist>
+                        <span id="e-category" class="error"></span>
+                    </div>
+                    <div class="field">
+                        <label for="f-date">Date (YYYY-MM-DD)</label>
+                        <input id="f-date" name="date" type="text" inputmode="numeric" aria-describedby="e-date">
+                        <span id="e-date" class="error"></span>
+                    </div>
+                    <button type="submit">Add transaction</button>
                 </form>
             </section>
-            <section id="settings" aria-labelledby="setting-title">
-                <h2 id="settings-form" novalidate></h2>
+
+            <section id="settings" aria-labelledby="settings-title">
+                <h2 id="settings-title">Settings</h2>
                 <form id="settings-form" novalidate>
                     <div class="field">
-                        <label for="s-cap">spending cap (base currency,blank = none)</label>
+                        <label for="s-cap">Spending cap (base currency, blank = none)</label>
                         <input id="s-cap" type="text" inputmode="decimal">
                     </div>
                     <fieldset>
-                        <legend>currencies (1 base = rate)</legend>
+                        <legend>Currencies (1 base = rate)</legend>
                         <div class="field">
-                            <label for="s-base">base currency</label>
+                            <label for="s-base">Base currency</label>
                             <input id="s-base" type="text" maxlength="3">
                         </div>
                         <div class="row">
-                            <div class="field"><label for="s-c1">currency 2</label><input id="s-c1" type="text" maxlength="3"</div>
-                            <div class="field"><label for="s-r1">rate</label><input id="s-r1" type="text" inputmode="decimal"></div>
+                            <div class="field"><label for="s-c1">Currency 2</label><input id="s-c1" type="text" maxlength="3"></div>
+                            <div class="field"><label for="s-r1">Rate</label><input id="s-r1" type="text" inputmode="decimal"></div>
                         </div>
                         <div class="row">
-                            <div class="field"><label for="s-c2">currency 3</label><input id="s-c2" type="text" maxlength="3></div>
+                            <div class="field"><label for="s-c2">Currency 3</label><input id="s-c2" type="text" maxlength="3"></div>
                             <div class="field"><label for="s-r2">Rate</label><input id="s-r2" type="text" inputmode="decimal"></div>
-          </div>
-        </fieldset>
-        <div class="field">
-          <label for="s-cats">Categories (comma separated)</label>
-          <input id="s-cats" type="text">
-        </div>
-        <p id="settings-err" class="error"></p>
-        <button type="submit">Save settings</button>
-      </form>
-
-      <div class="field">
-        <label for="s-display">Display currency</label>
-        <select id="s-display"></select>
-      </div>
-
-      <h3>Data</h3>
-      <div class="actions">
-        <button type="button" id="export">Export JSON</button>
-        <button type="button" id="load-seed">Load sample data</button>
-        <button type="button" id="clear" class="danger">Clear all</button>
-      </div>
-      <div class="field">
-        <label for="import">Import JSON</label>
-        <input id="import" type="file" accept=".json,application/json">
-      </div>
-    </section>
-
-    <section id="about" aria-labelledby="about-title">
-      <h2 id="about-title">About</h2>
-      <p>Track student spending by category, search with regular expressions, set a spending cap and convert between currencies. All data stays in your browser (localStorage).</p>
-      <ul>
-        <li>GitHub: <a href="https://github.com/engarambe-spec">engarambe-spec</a></li>
-        <li>Email: <a href="mailto:e.ngarambe@alustudent.com">e.ngarambe@alustudent.com</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2026 Student Finance Tracker</p>
-  </footer>
-</body>
-</html>
                         </div>
                     </fieldset>
+                    <div class="field">
+                        <label for="s-cats">Categories (comma separated)</label>
+                        <input id="s-cats" type="text">
+                    </div>
+                    <p id="settings-err" class="error"></p>
+                    <button type="submit">Save settings</button>
                 </form>
+
+                <div class="field">
+                    <label for="s-display">Display currency</label>
+                    <select id="s-display"></select>
+                </div>
+
+                <h3>Data</h3>
+                <div class="actions">
+                    <button type="button" id="export">Export JSON</button>
+                    <button type="button" id="load-seed">Load sample data</button>
+                    <button type="button" id="clear" class="danger">Clear all</button>
+                </div>
+                <div class="field">
+                    <label for="import">Import JSON</label>
+                    <input id="import" type="file" accept=".json,application/json">
+                </div>
+            </section>
+
+            <section id="about" aria-labelledby="about-title">
+                <h2 id="about-title">About</h2>
+                <p>Track student spending by category, search with regular expressions, set a spending cap and convert between currencies. All data stays in your browser (localStorage).</p>
+                <ul>
+                    <li>GitHub: <a href="https://github.com/engarambe-spec">engarambe-spec</a></li>
+                    <li>Email: <a href="mailto:e.ngarambe@alustudent.com">e.ngarambe@alustudent.com</a></li>
+                </ul>
             </section>
         </main>
+
+        <footer>
+            <p>&copy; 2026 Student Finance Tracker</p>
+        </footer>
     </body>
 </html>
